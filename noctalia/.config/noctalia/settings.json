@@ -247,13 +247,13 @@
     },
     "colorSchemes": {
         "darkMode": true,
-        "generationMethod": "tonal-spot",
+        "generationMethod": "rainbow",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
         "predefinedScheme": "Catppuccin",
         "schedulingMode": "off",
-        "useWallpaperColors": false
+        "useWallpaperColors": true
     },
     "controlCenter": {
         "cards": [
@@ -707,7 +707,7 @@
         "translucentWidgets": false
     },
     "wallpaper": {
-        "automationEnabled": true,
+        "automationEnabled": false,
         "directory": "/home/xevrion/Pictures/Wallpapers",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
