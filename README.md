@@ -12,8 +12,8 @@ My personal dotfiles for Fedora 43 + Hyprland + Noctalia setup.
 - Launcher: Rofi
 
 ## Install
-\`\`\`bash
+```bash
 git clone https://github.com/xevrion/dotfiles ~/dotfiles
 cd ~/dotfiles
 stow hyprland ghostty nvim zsh rofi noctalia
-\`\`\`
+```
