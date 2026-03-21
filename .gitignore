@@ -1,0 +1,6 @@
+*.log
+*.cache
+.DS_Store
+ghostty/themes/catppuccin-mocha-src/
+ghostty/themes/extras/
+nvim/.config/nvim/lazy-lock.json
