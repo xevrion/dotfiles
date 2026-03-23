@@ -8,7 +8,7 @@
         "customLaunchPrefixEnabled": false,
         "density": "default",
         "enableClipPreview": true,
-        "enableClipboardHistory": false,
+        "enableClipboardHistory": true,
         "enableSessionSearch": true,
         "enableSettingsSearch": true,
         "enableWindowsSearch": true,
@@ -30,7 +30,7 @@
         "mprisBlacklist": [
         ],
         "preferredPlayer": "",
-        "spectrumFrameRate": 30,
+        "spectrumFrameRate": 60,
         "visualizerType": "linear",
         "volumeFeedback": false,
         "volumeFeedbackSoundFile": "",
@@ -142,7 +142,7 @@
                 },
                 {
                     "colorizeIcons": false,
-                    "hideMode": "hidden",
+                    "hideMode": "transparent",
                     "id": "ActiveWindow",
                     "maxWidth": 145,
                     "scrollingMode": "hover",
@@ -189,7 +189,7 @@
                 },
                 {
                     "deviceNativePath": "__default__",
-                    "displayMode": "graphic-clean",
+                    "displayMode": "icon-hover",
                     "hideIfIdle": false,
                     "hideIfNotDetected": true,
                     "id": "Battery",
@@ -332,8 +332,8 @@
                         "roundedCorners": true,
                         "showBackground": true,
                         "useCustomFont": false,
-                        "x": 49,
-                        "y": 82
+                        "x": 40,
+                        "y": 80
                     },
                     {
                         "hideMode": "visible",
@@ -344,15 +344,24 @@
                         "showButtons": true,
                         "showVisualizer": true,
                         "visualizerType": "linear",
-                        "x": 1656,
-                        "y": 1325
+                        "x": 1600,
+                        "y": 1320
                     },
                     {
                         "id": "Weather",
                         "roundedCorners": true,
                         "showBackground": true,
-                        "x": 53,
-                        "y": 1317
+                        "x": 40,
+                        "y": 1320
+                    },
+                    {
+                        "defaultSettings": {
+                            "startOnMonday": true
+                        },
+                        "id": "plugin:calendar-widget",
+                        "showBackground": true,
+                        "x": 2276,
+                        "y": 346
                     }
                 ]
             },
@@ -531,7 +540,7 @@
         "bluetoothRssiPollingEnabled": false,
         "disableDiscoverability": false,
         "networkPanelView": "wifi",
-        "wifiDetailsViewMode": "grid",
+        "wifiDetailsViewMode": "list",
         "wifiEnabled": false
     },
     "nightLight": {
@@ -669,7 +678,7 @@
         "batteryWarningThreshold": 20,
         "cpuCriticalThreshold": 90,
         "cpuWarningThreshold": 80,
-        "criticalColor": "",
+        "criticalColor": "#ffb4ab",
         "diskAvailCriticalThreshold": 10,
         "diskAvailWarningThreshold": 20,
         "diskCriticalThreshold": 90,
@@ -685,7 +694,7 @@
         "tempCriticalThreshold": 90,
         "tempWarningThreshold": 80,
         "useCustomColors": false,
-        "warningColor": ""
+        "warningColor": "#a0d0c9"
     },
     "templates": {
         "activeTemplates": [

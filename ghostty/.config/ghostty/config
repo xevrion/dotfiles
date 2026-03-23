@@ -14,3 +14,4 @@ command = /usr/bin/zsh
 clipboard-read = allow
 clipboard-write = allow
 copy-on-select = false
+confirm-close-surface = false
