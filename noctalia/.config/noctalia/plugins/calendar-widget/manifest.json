@@ -1,7 +1,7 @@
 {
   "id": "calendar-widget",
   "name": "Desktop Calendar",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "minNoctaliaVersion": "4.6.6",
   "author": "Simon",
   "license": "MIT",
@@ -9,7 +9,6 @@
   "description": "Monthly calendar with today highlighted.",
   "tags": ["Desktop", "Utility"],
   "entryPoints": {
-    "main": "Main.qml",
     "desktopWidget": "DesktopWidget.qml",
     "settings": "DesktopWidgetSettings.qml"
   },
