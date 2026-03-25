@@ -1,0 +1,37 @@
+{
+  "thumbCacheReady": true,
+  "enabled": true,
+  "wallpapersFolder": "/home/xevrion/Videos/LiveWallpapers",
+  "monitorSpecific": false,
+  "HDMI-A-1": {
+    "isPlaying": true,
+    "currentWallpaper": "/home/xevrion/Videos/LiveWallpapers/autumn-tree-ghost-of-tsushima-moewalls-com.mp4",
+    "noctaliaWallpaper": "/home/xevrion/Pictures/Wallpapers/wallhaven-6l58vw.jpg",
+    "volume": 0,
+    "automation": false,
+    "automationMode": "random",
+    "automationTime": 300,
+    "hardwareAcceleration": false,
+    "profile": "default",
+    "fillMode": "",
+    "orientation": 0,
+    "isMuted": false
+  },
+  "eDP-1": {
+    "isPlaying": true,
+    "currentWallpaper": "/home/xevrion/Videos/LiveWallpapers/autumn-tree-ghost-of-tsushima-moewalls-com.mp4",
+    "noctaliaWallpaper": "/home/xevrion/Pictures/Wallpapers/wallhaven-6l58vw.jpg",
+    "volume": 0,
+    "automation": false,
+    "automationMode": "random",
+    "automationTime": 300,
+    "hardwareAcceleration": false,
+    "profile": "default",
+    "fillMode": "",
+    "orientation": 0,
+    "isMuted": false
+  },
+  "activeBackend": "qt6-multimedia",
+  "automationCustomTime": [],
+  "mpvSocket": "/tmp/mpv-socket"
+}
