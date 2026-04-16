@@ -367,7 +367,7 @@
                         "roundedCorners": true,
                         "scale": 1.4168431303572884,
                         "showBackground": true,
-                        "statType": "Memory",
+                        "statType": "CPU",
                         "x": 1541,
                         "y": 882
                     },
@@ -534,7 +534,7 @@
         "bluetoothRssiPollIntervalMs": 60000,
         "bluetoothRssiPollingEnabled": false,
         "disableDiscoverability": false,
-        "networkPanelView": "wifi",
+        "networkPanelView": "ethernet",
         "wifiDetailsViewMode": "list"
     },
     "nightLight": {

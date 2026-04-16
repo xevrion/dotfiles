@@ -13,6 +13,7 @@ exec-once = /home/xevrion/.local/bin/hypr-display-toggle guard
 
 env = XCURSOR_SIZE,24
 env = HYPRCURSOR_SIZE,24
+env = LIBVA_DRIVER_NAME,nvidia
 env = ELECTRON_OZONE_PLATFORM_HINT,auto
 env = NVD_BACKEND,direct
 env = PATH,/home/xevrion/.local/bin:/home/xevrion/.bun/bin:$PATH
@@ -45,7 +46,7 @@ general {
 
     resize_on_border = true
 
-    allow_tearing = true
+    allow_tearing = false
     extend_border_grab_area = 30
 
     layout = dwindle
@@ -133,8 +134,7 @@ bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
 bind = $mainMod SHIFT, N, exec, qs -c noctalia-shell ipc call nightLight toggle
 
-# bind = $mainMod, S, togglespecialworkspace, magic
-bind = $mainMod, S, exec, ~/.local/bin/shot-window
+bind = $mainMod, S, togglespecialworkspace, magic
 bind = $mainMod SHIFT, S, movetoworkspace, special:magic
 
 
@@ -163,7 +163,7 @@ bindl = , XF86AudioPrev, exec, qs -c noctalia-shell ipc call media previous
 windowrule = suppressevent maximize, class:.*
 windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
 
-monitor=HDMI-A-1,2560x1440@144,0x0,1
+monitor=HDMI-A-5,2560x1440@144,0x0,1
 monitor=eDP-1,1920x1080@144,2560x0,1
 
 animations {
@@ -235,8 +235,7 @@ bind = $mainMod ALT, up, resizeactive, 0 -30
 bind = $mainMod ALT, down, resizeactive, 0 30
 
 # Scratchpad terminal (Super + `) — pull up a floating terminal anytime
-# bind = $mainMod, grave, togglespecialworkspace, scratchpad
-bind = $mainMod, grave, exec, ~/.local/bin/shot-region
+bind = $mainMod, grave, togglespecialworkspace, scratchpad
 bind = $mainMod SHIFT, grave, movetoworkspace, special:scratchpad
 
 # Screenshot full screen
@@ -279,6 +278,8 @@ input {
     accel_profile = flat
 }
 exec-once = gnome-keyring-daemon --start --components=secrets
+exec-once = gnome-keyring-daemon --start --components=secrets
+exec-once = gnome-keyring-daemon --start --components=secrets
 
 #windowrulev2 = opacity 0.94 0.94, class:.*
 bind = $mainMod, W, exec, qs -c noctalia-shell ipc call wallpaper random ""
@@ -294,7 +295,7 @@ bind = $mainMod, Space, exec, vicinae toggle
 
 
 
-# layerrule = blur, vicinae  # disabled: blur is off globally; this was forcing blur shader on vicinae layer
+layerrule = blur, vicinae
 layerrule = ignorealpha 0, vicinae
 
 layerrule = noanim, vicinae

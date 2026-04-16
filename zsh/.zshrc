@@ -164,3 +164,4 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export QT_XCB_GL_INTEGRATION=xcb_glx  # Force GLX over EGL for Nvidia on X11 (aqtinstall Qt)
 export TERM=xterm-256color
+alias glow="glow -p"
