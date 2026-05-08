@@ -1,17 +1,17 @@
+
 # xevrion's dotfiles
 
 Personal Linux desktop dotfiles built around Fedora, Hyprland, Ghostty, Noctalia, Zsh, and Neovim.
 
-## What's here
+## 📂 What's here
 
-- `hyprland/`: Hyprland config, keybinds, monitor layout, screenshots, and Noctalia shell integration
+- `hyprland/`: Hyprland config, keybinds, monitor layout, window rules (voiceflow-overlay), and Noctalia shell integration
 - `ghostty/`: Ghostty terminal config and bundled themes
-- `noctalia/`: Noctalia shell settings, colors, and plugin sources
+- `noctalia/`: Noctalia shell settings, color schemes, and plugin sources
 - `nvim/`: Neovim config based on the LazyVim starter
 - `rofi/`: Rofi launcher, runner, and powermenu theme/scripts
 - `zsh/`: Zsh config with Oh My Zsh and Powerlevel10k
 - `wallpapers/`: wallpaper collection for the desktop setup
-
 ## Current stack
 
 - OS: Fedora 43
