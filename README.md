@@ -62,7 +62,7 @@ If you already have conflicting files in `~/.config` or your home directory, bac
 stow --adopt ghostty hyprland noctalia rofi zsh nvim
 ```
 
-## Notes
+## 📝 Notes
 
 - `nvim/.config/nvim` is currently the LazyVim starter layout with local changes on top.
 - Some values are machine-specific and should be adjusted after install:
@@ -70,8 +70,8 @@ stow --adopt ghostty hyprland noctalia rofi zsh nvim
   - absolute paths like `/home/xevrion/...`
   - Ghostty shader path
   - terminal commands referenced by Noctalia and Rofi
+- **Noctalia** utilizes a Material Design color palette and has `autoPasteClipboard` disabled by default in its settings.
 - Wallpapers are included in `wallpapers/`, but wallpaper selection/loading is not fully wired here beyond the Hyprland side.
-
 ## Uninstall
 
 ```bash
