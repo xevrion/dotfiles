@@ -165,3 +165,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export QT_XCB_GL_INTEGRATION=xcb_glx  # Force GLX over EGL for Nvidia on X11 (aqtinstall Qt)
 export TERM=xterm-256color
 alias glow="glow -p"
+
+# Kokoro TTS — GPU acceleration via CUDA (RTX 4060)
+export ONNX_PROVIDER=CUDAExecutionProvider
+export LD_LIBRARY_PATH="$HOME/.local/share/uv/tools/kokoro-tts/lib/python3.14/site-packages/nvidia/cudnn/lib:$HOME/.local/share/uv/tools/kokoro-tts/lib/python3.14/site-packages/nvidia/cublas/lib:$HOME/.local/share/uv/tools/kokoro-tts/lib/python3.14/site-packages/nvidia/cuda_runtime/lib:$HOME/.local/share/uv/tools/kokoro-tts/lib/python3.14/site-packages/nvidia/curand/lib:$HOME/.local/share/uv/tools/kokoro-tts/lib/python3.14/site-packages/nvidia/cufft/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+alias readnote='bash ~/read-note.sh'
