@@ -1,0 +1,20 @@
+[user]
+	email = krbavadiya11@gmail.com
+	name = Yash Bavadiya
+[alias]
+	ci = commit
+	di = diff --color-words
+	st = status
+	co = checkout
+	log1 = log --pretty=oneline --abbrev-commit
+	logs = log --stat
+[init]
+	defaultBranch = main
+[credential "https://invent.kde.org"]
+	provider = generic
+[url "https://invent.kde.org/"]
+	insteadOf = kde:
+[url "ssh://git@invent.kde.org/"]
+	pushInsteadOf = kde:
+[push]
+	autoSetupRemote = true
