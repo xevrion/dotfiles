@@ -7,16 +7,42 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "show_edit_predictions": false,
+  "edit_predictions": {
+    "provider": "copilot"
+  },
+  "cli_default_open_behavior": "new_window",
+  "terminal": {
+    "font_family": ".SystemUIFont"
+  },
+  "mouse_wheel_zoom": true,
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "minimap": {
     "show": "never"
   },
   "base_keymap": "VSCode",
-  "icon_theme": "Zed (Default)",
+  "icon_theme": "Catppuccin Mocha",
   "ui_font_size": 16,
   "buffer_font_size": 15,
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "Ayu Dark"
+    "dark": "Catppuccin Mocha - No Italics"
   }
 }

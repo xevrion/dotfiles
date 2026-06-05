@@ -1,0 +1,9 @@
+[
+	{ "keys": ["alt+z"], "command": "toggle_setting", "args": {"setting": "word_wrap"} },
+	{ "keys": ["alt+up"], "command": "swap_line_up" },
+{ "keys": ["alt+down"], "command": "swap_line_down" },
+{ "keys": ["shift+alt+down"], "command": "duplicate_line" },
+{ "keys": ["shift+alt+up"], "command": "duplicate_line" },
+{ "keys": ["shift+alt+f"], "command": "clang_format" }
+
+]
