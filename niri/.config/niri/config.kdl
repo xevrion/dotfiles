@@ -23,6 +23,7 @@ spawn-at-startup "ghostty"
 spawn-sh-at-startup "wl-paste --watch cliphist store"
 spawn-at-startup "udiskie"
 spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
+spawn-at-startup "/usr/libexec/xdg-desktop-portal-kde"
 spawn-sh-at-startup "qs -c noctalia-shell -d"
 spawn-sh-at-startup "/home/xevrion/.local/bin/hypr-display-toggle guard"
 spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
@@ -51,34 +52,20 @@ input {
 
 // ── Outputs ──
 output "HDMI-A-1" {
-    mode "2560x1440@144"
+    mode "2560x1440@144.001"
     position x=0 y=0
     scale 1
-    variable-refresh-rate on-demand=true
 }
 
 output "eDP-1" {
-    mode "1920x1080@144"
+    mode "1920x1080@144.003"
     position x=2560 y=0
     scale 1
     variable-refresh-rate on-demand=true
 }
 
-// ── Workspace → Output Assignment ──
-workspace "1" { open-on-output "HDMI-A-1"; }
-workspace "2" { open-on-output "HDMI-A-1"; }
-workspace "3" { open-on-output "HDMI-A-1"; }
-workspace "4" { open-on-output "HDMI-A-1"; }
-workspace "5" { open-on-output "HDMI-A-1"; }
-workspace "6" { open-on-output "eDP-1"; }
-workspace "7" { open-on-output "eDP-1"; }
-workspace "8" { open-on-output "eDP-1"; }
-workspace "9" { open-on-output "eDP-1"; }
-workspace "10" { open-on-output "eDP-1"; }
-
-// Named workspaces replicating Hyprland's special:scratchpad & special:magic
-workspace "scratchpad"
-workspace "magic"
+// Workspaces are dynamic per-output — each monitor gets its own independent
+// workspace list that grows as needed, always keeping one empty at the end.
 
 // ── Layout ──
 layout {
@@ -281,6 +268,10 @@ binds {
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
 
+    // ── Focus Monitor ──
+    Mod+Alt+Left  { focus-monitor-left; }
+    Mod+Alt+Right { focus-monitor-right; }
+
     // ── Move Window Between Monitors ──
     // Hyprland: Super+Shift+arrows → movewindow mon:-1/+1
     Mod+Shift+Left  { move-column-to-monitor-left; }
@@ -370,4 +361,5 @@ binds {
 
 debug {
     honor-xdg-activation-with-invalid-serial
+    emulate-zero-presentation-time
 }
