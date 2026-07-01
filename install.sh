@@ -21,6 +21,7 @@ PACKAGES=(
   gtk-4.0
   hyprland
   lazygit
+  local
   noctalia
   nvim
   rofi
@@ -29,6 +30,10 @@ PACKAGES=(
 )
 
 for pkg in "${PACKAGES[@]}"; do
+  # ensure target parent dirs exist for local/bin
+  if [[ "$pkg" == "local" ]]; then
+    mkdir -p "$HOME/.local/bin"
+  fi
   if stow --no-folding "$pkg" 2>/dev/null; then
     echo "  stowed $pkg"
   else

@@ -1,0 +1,157 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+internal_monitor="${HYPR_INTERNAL_MONITOR:-eDP-1}"
+poll_interval="${HYPR_DISPLAY_GUARD_INTERVAL:-3}"
+
+# ── Compositor detection ──
+
+is_hyprland() {
+    [[ -n "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]] && command -v hyprctl &>/dev/null
+}
+
+is_niri() {
+    command -v niri &>/dev/null && niri msg version &>/dev/null 2>&1
+}
+
+# ── Sysfs helpers (physical connector presence) ──
+
+output_physically_connected() {
+    local name="$1"
+    # sysfs paths: /sys/class/drm/card*-<name>/status
+    local path
+    for path in /sys/class/drm/card*-"${name}"/status; do
+        [[ -f "$path" ]] && [[ "$(cat "$path")" = "connected" ]] && return 0
+    done
+    return 1
+}
+
+# ── Hyprland helpers ──
+
+hypr_has_monitor() {
+    local name="$1"
+    hyprctl monitors all 2>/dev/null | grep -q "^Monitor ${name} "
+}
+
+hypr_internal_is_enabled() {
+    hyprctl monitors 2>/dev/null | grep -q "^Monitor ${internal_monitor} "
+}
+
+hypr_external_connected() {
+    hyprctl monitors all 2>/dev/null | awk -v intmon="$internal_monitor" '
+        /^Monitor / { name = $2; if (name != intmon) found = 1 }
+        END { exit(found ? 0 : 1) }
+    '
+}
+
+hypr_enable_internal() {
+    hyprctl keyword monitor "${internal_monitor}, preferred, auto, 1" >/dev/null
+}
+
+hypr_disable_internal() {
+    hyprctl keyword monitor "${internal_monitor}, disable" >/dev/null
+}
+
+# ── Niri helpers ──
+
+niri_has_monitor() {
+    output_physically_connected "$1"
+}
+
+niri_internal_is_enabled() {
+    niri msg -j outputs 2>/dev/null | python3 -c "import json,sys;d=json.load(sys.stdin);sys.exit(0 if d.get('${internal_monitor}',{}).get('current_mode') is not None else 1)"
+}
+niri_external_connected() {
+    while IFS= read -r line; do
+        # match only Output header lines: Output "..." (connector-name)
+        if [[ "$line" =~ ^Output\ \"[^\"]+\"\ \(([a-zA-Z0-9_-]+)\)$ ]]; then
+            name="${BASH_REMATCH[1]}"
+            if [[ "$name" != "$internal_monitor" ]]; then
+                return 0
+            fi
+        fi
+    done < <(niri msg outputs 2>/dev/null)
+    return 1
+}
+
+niri_enable_internal() {
+    niri msg output "${internal_monitor}" on >/dev/null
+}
+
+niri_disable_internal() {
+    niri msg output "${internal_monitor}" off >/dev/null
+}
+
+# ── Dispatch ──
+
+has_monitor() {
+    if is_hyprland; then hypr_has_monitor "$@"
+    elif is_niri; then niri_has_monitor "$@"
+    else return 1
+    fi
+}
+
+internal_is_enabled() {
+    if is_hyprland; then hypr_internal_is_enabled
+    elif is_niri; then niri_internal_is_enabled
+    else return 1
+    fi
+}
+
+external_connected() {
+    if is_hyprland; then hypr_external_connected
+    elif is_niri; then niri_external_connected
+    else return 1
+    fi
+}
+
+enable_internal() {
+    if is_hyprland; then hypr_enable_internal
+    elif is_niri; then niri_enable_internal
+    fi
+}
+
+disable_internal() {
+    if is_hyprland; then hypr_disable_internal
+    elif is_niri; then niri_disable_internal
+    fi
+}
+
+toggle() {
+    if ! has_monitor "$internal_monitor"; then
+        exit 0
+    fi
+
+    if external_connected; then
+        if internal_is_enabled; then
+            disable_internal
+        else
+            enable_internal
+        fi
+    else
+        enable_internal
+    fi
+}
+
+guard() {
+    while true; do
+        if ! is_hyprland && ! is_niri; then
+            sleep "$poll_interval"
+            continue
+        fi
+        if has_monitor "$internal_monitor" && ! external_connected && ! internal_is_enabled; then
+            enable_internal
+        fi
+        sleep "$poll_interval"
+    done
+}
+
+case "${1:-toggle}" in
+    toggle) toggle ;;
+    guard) guard ;;
+    *)
+        echo "usage: $0 [toggle|guard]" >&2
+        exit 2
+        ;;
+esac
