@@ -1,0 +1,447 @@
+[theme]
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "rainbow"
+
+[shell]
+ui_scale = 1.0
+corner_radius_scale = 1.0
+font_family = "sans-serif"
+avatar_path = "/home/xevrion/Coding/thy-xev/src/assets/download (10).jpeg"
+telemetry_enabled = false
+clipboard_auto_paste = "auto"
+clipboard_history_max_entries = 100
+clipboard_confirm_clear_history = true
+password_style = "default"
+screen_time_enabled = false
+shared_gl_context = true
+disable_mipmaps = false
+setup_wizard_enabled = true
+app_icon_colorize = false
+middle_click_opens_widget_settings = true
+show_location = true
+
+[shell.launcher]
+categories = true
+show_icons = true
+compact = false
+app_grid = false
+session_search = true
+sort_by_usage = true
+
+[shell.animation]
+enabled = true
+speed = 1.0
+
+[shell.shadow]
+direction = "down_right"
+alpha = 0.55
+
+[shell.panel]
+transparency_mode = "solid"
+borders = true
+shadow = true
+control_center_placement = "attached"
+wallpaper_placement = "attached"
+session_placement = "attached"
+polkit_placement = "floating"
+polkit_position = "center"
+floating_offset = 8
+
+[shell.screenshot]
+save_to_file = true
+copy_to_clipboard = true
+pipe_to_command = false
+directory = ""
+
+[shell.session.power]
+suspend = ""
+reboot = ""
+shutdown = ""
+
+[[shell.session.actions]]
+action = "lock"
+enabled = true
+shortcut = "1"
+countdown_seconds = 10
+
+[[shell.session.actions]]
+action = "suspend"
+enabled = true
+shortcut = "2"
+countdown_seconds = 10
+
+[[shell.session.actions]]
+action = "hibernate"
+enabled = true
+shortcut = "3"
+countdown_seconds = 10
+
+[[shell.session.actions]]
+action = "reboot"
+enabled = true
+shortcut = "4"
+countdown_seconds = 10
+
+[[shell.session.actions]]
+action = "logout"
+enabled = true
+shortcut = "5"
+countdown_seconds = 10
+
+[[shell.session.actions]]
+action = "shutdown"
+enabled = true
+shortcut = "6"
+countdown_seconds = 10
+
+[[shell.session.actions]]
+action = "command"
+label = "Reboot to UEFI"
+glyph = "cpu"
+command = "systemctl reboot --firmware-setup"
+enabled = true
+shortcut = "7"
+countdown_seconds = 10
+
+[[shell.session.actions]]
+action = "userspace_reboot"
+enabled = false
+shortcut = ""
+
+[keybinds]
+validate = ["return", "kp_enter"]
+cancel = ["escape"]
+left = ["left"]
+right = ["right"]
+up = ["up"]
+down = ["down"]
+tab_next = ["tab"]
+tab_previous = ["shift+tab", "iso_left_tab"]
+
+[osd]
+position = "top_right"
+position_vertical = "top_center"
+orientation = "horizontal"
+scale = 1.0
+background_opacity = 1.0
+offset_x = 20
+offset_y = 8
+
+[osd.kinds]
+volume = true
+volume_output = true
+volume_input = true
+brightness = true
+wifi = true
+bluetooth = true
+power_profile = true
+caffeine = true
+nightlight = true
+dnd = true
+lock_keys = true
+keyboard_layout = true
+privacy = true
+
+[lockscreen]
+enabled = true
+fingerprint = true
+allow_empty_password = false
+blurred_desktop = false
+blur_intensity = 0.0
+tint_intensity = 0.0
+monitors = []
+wallpaper = ""
+
+[bar]
+order = ["main"]
+
+[bar.main]
+position = "top"
+enabled = true
+auto_hide = false
+show_on_workspace_switch = true
+reserve_space = true
+layer = "top"
+thickness = 34
+background_opacity = 0.0
+border_width = 0.0
+shadow = true
+radius = 12
+margin_ends = 4
+margin_edge = 4
+padding = 2
+widget_spacing = 6
+scale = 1.0
+font_weight = "regular"
+capsule = true
+capsule_fill = "surface_variant"
+capsule_thickness = 0.76
+capsule_radius = 8.0
+capsule_opacity = 1.0
+
+start = [
+  "launcher",
+  "clock",
+  "sysmon",
+  "active-window",
+  "media-mini"
+]
+center = ["workspaces"]
+end = [
+  "tray",
+  "notifications",
+  "battery",
+  "volume",
+  "brightness",
+  "control-center"
+]
+
+[bar.main.dead_zone]
+command = ""
+right_command = ""
+middle_command = ""
+
+[widget.launcher]
+type = "launcher"
+glyph = "rocket"
+custom_image_colorize = false
+
+[widget.clock]
+type = "clock"
+format = "{:%H:%M}\n{:%a, %b %d}"
+tooltip_format = "{:%H:%M %a, %b %d}"
+
+[widget.sysmon]
+type = "sysmon"
+stat = "cpu_usage"
+glyph = ""
+display = "gauge"
+show_label = true
+highlight_color = "error"
+
+[widget.active-window]
+type = "active_window"
+min_length = 80
+max_length = 145
+icon_size = 14
+title_scroll = "on_hover"
+display = "icon_and_text"
+show_empty_label = false
+
+[widget.media-mini]
+type = "media"
+album_art_only = false
+hide_album_art = false
+min_length = 80
+max_length = 145
+art_size = 16
+title_scroll = "none"
+hide_when_no_media = false
+
+[widget.workspaces]
+type = "workspaces"
+display = "id"
+minimal = false
+max_label_chars = 2
+pill_scale = 0.66
+active_pill_size = 2.2
+inactive_pill_size = 1.0
+focused_color = "primary"
+occupied_color = "secondary"
+empty_color = "secondary"
+focused_output_only = false
+labels_only_when_occupied = true
+
+[widget.tray]
+type = "tray"
+hidden = []
+pinned = []
+drawer = true
+drawer_columns = 3
+match_adjacent_spacing = false
+
+[widget.notifications]
+type = "notifications"
+hide_when_no_unread = false
+
+[widget.battery]
+type = "battery"
+show_label = false
+device = "auto"
+
+[widget.volume]
+type = "volume"
+device = "output"
+scroll_step = 5
+show_label = false
+mute_color = "error"
+
+[widget.brightness]
+type = "brightness"
+scroll_step = 5
+show_label = false
+
+[widget.control-center]
+type = "control-center"
+glyph = "noctalia"
+custom_image_colorize = false
+
+[dock]
+enabled = false
+position = "bottom"
+icon_size = 48
+background_opacity = 1.0
+shadow = true
+radius = 16
+margin_ends = 0
+margin_edge = 0
+show_running = true
+auto_hide = false
+reserve_space = true
+active_scale = 1.0
+inactive_scale = 0.85
+magnification = true
+magnification_scale = 1.35
+active_opacity = 1.0
+inactive_opacity = 0.6
+show_instance_count = false
+show_dots = false
+
+[wallpaper]
+enabled = true
+fill_mode = "crop"
+fill_color = "#1a1a2e"
+transition = ["fade", "disc", "stripes", "wipe", "pixelate", "honeycomb"]
+transition_duration = 1500
+edge_smoothness = 0.05
+transition_on_startup = false
+directory = "/home/xevrion/Pictures/Wallpapers"
+per_monitor_directories = false
+
+[wallpaper.automation]
+enabled = false
+interval_seconds = 60
+order = "random"
+recursive = true
+
+[wallpaper.default]
+path = ""
+
+[notification]
+enable_daemon = true
+show_app_name = true
+show_actions = true
+position = "top_right"
+layer = "top"
+scale = 1.0
+background_opacity = 1.0
+offset_x = 20
+offset_y = 8
+monitors = []
+collapse_on_dismiss = true
+
+[audio]
+enable_overdrive = false
+enable_sounds = false
+sound_volume = 0.5
+
+[brightness]
+enable_ddcutil = false
+ignore_mmids = []
+minimum_brightness = 0.0
+sync_all_monitors = false
+
+[battery]
+warning_threshold = 20
+
+[system.monitor]
+enabled = true
+cpu_temp_sensor_path = ""
+cpu_poll_seconds = 2.0
+gpu_poll_seconds = 0.0
+memory_poll_seconds = 2.0
+network_poll_seconds = 3.0
+disk_poll_seconds = 10.0
+cpu_usage_activity_threshold = 50
+cpu_usage_critical_threshold = 90
+cpu_temp_activity_threshold = 60
+cpu_temp_critical_threshold = 85
+gpu_temp_activity_threshold = 60
+gpu_temp_critical_threshold = 85
+gpu_usage_activity_threshold = 50
+gpu_usage_critical_threshold = 95
+gpu_vram_activity_threshold = 50
+gpu_vram_critical_threshold = 90
+ram_pct_activity_threshold = 60
+ram_pct_critical_threshold = 90
+swap_pct_activity_threshold = 20
+swap_pct_critical_threshold = 80
+disk_pct_activity_threshold = 80
+disk_pct_critical_threshold = 95
+net_rx_activity_threshold = 1
+net_rx_critical_threshold = 50
+net_tx_activity_threshold = 1
+net_tx_critical_threshold = 50
+
+[nightlight]
+enabled = false
+force = false
+temperature_day = 6500
+temperature_night = 4000
+
+[location]
+auto_locate = false
+address = "Surat Gujarat"
+sunset = "18:30"
+sunrise = "06:30"
+
+[weather]
+enabled = true
+
+[calendar]
+enabled = true
+
+[idle]
+pre_action_fade_seconds = 2.0
+
+[idle.behavior.lock]
+timeout = 660
+action = "lock"
+enabled = true
+
+[idle.behavior.screen-off]
+timeout = 600
+action = "screen_off"
+enabled = true
+
+[idle.behavior.suspend]
+timeout = 1800
+action = "lock_and_suspend"
+enabled = true
+lock_before_suspend = true
+
+[hooks]
+started = ""
+wallpaper_changed = ""
+colors_changed = ""
+theme_mode_changed = ""
+session_locked = ""
+session_unlocked = ""
+logging_out = ""
+rebooting = ""
+shutting_down = ""
+battery_charging = ""
+battery_discharging = ""
+battery_plugged = ""
+battery_percentage_changed = ""
+power_profile_changed = ""
+wifi_enabled = ""
+wifi_disabled = ""
+bluetooth_enabled = ""
+bluetooth_disabled = ""
+
+[control_center]
+sidebar = "compact"
+width = 680
+hidden_tabs = []

@@ -37,7 +37,7 @@
         "volumeFeedback": false,
         "volumeFeedbackSoundFile": "",
         "volumeOverdrive": false,
-        "volumeStep": 5
+        "volumeStep": 2
     },
     "bar": {
         "autoHideDelay": 500,
@@ -103,6 +103,7 @@
             "left": [
                 {
                     "colorizeSystemIcon": "none",
+                    "colorizeSystemText": "none",
                     "customIconPath": "",
                     "enableColorization": false,
                     "icon": "rocket",
@@ -148,6 +149,7 @@
                     "maxWidth": 145,
                     "scrollingMode": "hover",
                     "showIcon": true,
+                    "showText": true,
                     "textColor": "none",
                     "useFixedWidth": false
                 },
@@ -214,6 +216,7 @@
                 {
                     "colorizeDistroLogo": false,
                     "colorizeSystemIcon": "none",
+                    "colorizeSystemText": "none",
                     "customIconPath": "",
                     "enableColorization": false,
                     "icon": "noctalia",
@@ -254,6 +257,7 @@
         "monitorForColors": "",
         "predefinedScheme": "Catppuccin",
         "schedulingMode": "off",
+        "syncGsettings": true,
         "useWallpaperColors": true
     },
     "controlCenter": {
@@ -317,43 +321,20 @@
         }
     },
     "desktopWidgets": {
-        "enabled": false,
-        "gridSnap": false,
-        "gridSnapScale": false,
+        "enabled": true,
+        "gridSnap": true,
+        "gridSnapScale": true,
         "monitorWidgets": [
             {
                 "name": "HDMI-A-1",
                 "widgets": [
                     {
-                        "clockColor": "none",
-                        "clockStyle": "digital",
-                        "customFont": "",
-                        "format": "HH:mm\\nd MMMM yyyy",
-                        "id": "Clock",
+                        "id": "plugin:github-contributions",
                         "roundedCorners": true,
+                        "scale": 1.4977921254118733,
                         "showBackground": true,
-                        "useCustomFont": false,
-                        "x": 40,
-                        "y": 80
-                    },
-                    {
-                        "hideMode": "visible",
-                        "id": "MediaPlayer",
-                        "roundedCorners": true,
-                        "showAlbumArt": true,
-                        "showBackground": true,
-                        "showButtons": true,
-                        "showVisualizer": true,
-                        "visualizerType": "linear",
-                        "x": 1600,
-                        "y": 1320
-                    },
-                    {
-                        "id": "Weather",
-                        "roundedCorners": true,
-                        "showBackground": true,
-                        "x": 40,
-                        "y": 1320
+                        "x": 760,
+                        "y": 40
                     }
                 ]
             },
@@ -361,28 +342,20 @@
                 "name": "eDP-1",
                 "widgets": [
                     {
-                        "diskPath": "/",
-                        "id": "SystemStat",
-                        "layout": "bottom",
-                        "roundedCorners": true,
-                        "scale": 1.4168431303572884,
+                        "defaultSettings": {
+                            "layout": "graph",
+                            "refreshInterval": 60,
+                            "showLabels": true,
+                            "showTotal": true,
+                            "token": "",
+                            "username": "",
+                            "weeksShown": 52
+                        },
+                        "id": "plugin:github-contributions",
+                        "scale": 1.3717421124828533,
                         "showBackground": true,
-                        "statType": "CPU",
-                        "x": 1541,
-                        "y": 882
-                    },
-                    {
-                        "colorName": "primary",
-                        "height": 72,
-                        "hideWhenIdle": false,
-                        "id": "AudioVisualizer",
-                        "roundedCorners": true,
-                        "scale": 1.5528507003011385,
-                        "showBackground": true,
-                        "visualizerType": "linear",
-                        "width": 320,
-                        "x": 36,
-                        "y": 936
+                        "x": 480,
+                        "y": 40
                     }
                 ]
             }
@@ -484,6 +457,7 @@
         "showHibernateOnLockScreen": false,
         "showScreenCorners": true,
         "showSessionButtonsOnLockScreen": true,
+        "smoothScrollEnabled": true,
         "telemetryEnabled": false
     },
     "hooks": {
@@ -514,27 +488,28 @@
     },
     "location": {
         "analogClockInCalendar": false,
+        "autoLocate": false,
         "firstDayOfWeek": -1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
-        "name": "Surat Gujarat",
+        "name": "Jodhpur, Rajasthan",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
         "showWeekNumberInCalendar": false,
         "use12hourFormat": false,
         "useFahrenheit": false,
         "weatherEnabled": true,
-        "weatherShowEffects": true
+        "weatherShowEffects": true,
+        "weatherTaliaMascotAlways": false
     },
     "network": {
-        "airplaneModeEnabled": false,
-        "bluetoothAutoConnect": true,
+        "bluetoothAutoConnect": false,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
         "bluetoothRssiPollIntervalMs": 60000,
         "bluetoothRssiPollingEnabled": false,
         "disableDiscoverability": false,
-        "networkPanelView": "ethernet",
+        "networkPanelView": "wifi",
         "wifiDetailsViewMode": "list"
     },
     "nightLight": {
@@ -720,6 +695,7 @@
         "fillColor": "#000000",
         "fillMode": "crop",
         "hideWallpaperFilenames": false,
+        "linkLightAndDarkWallpapers": true,
         "monitorDirectories": [
             {
                 "directory": "/home/xevrion/Pictures/Wallpapers",
@@ -755,7 +731,7 @@
         "useOriginalImages": false,
         "useSolidColor": false,
         "useWallhaven": false,
-        "viewMode": "browse",
+        "viewMode": "single",
         "wallhavenApiKey": "",
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",

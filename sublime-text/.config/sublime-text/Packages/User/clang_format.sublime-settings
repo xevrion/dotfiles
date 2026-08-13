@@ -15,7 +15,7 @@
     // local directories from a clang-format settings file. See the clang-format
     // documentation to see how this works. 
 
-    "style": "Microsoft",
+    "style": "Google",
 
     // Setting this to true will run the formatter on every save. If you want to
     // only enable this for a given project, try checking out the package

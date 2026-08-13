@@ -170,3 +170,12 @@ alias glow="glow -p"
 export ONNX_PROVIDER=CUDAExecutionProvider
 export LD_LIBRARY_PATH="$HOME/.local/share/uv/tools/kokoro-tts/lib/python3.14/site-packages/nvidia/cudnn/lib:$HOME/.local/share/uv/tools/kokoro-tts/lib/python3.14/site-packages/nvidia/cublas/lib:$HOME/.local/share/uv/tools/kokoro-tts/lib/python3.14/site-packages/nvidia/cuda_runtime/lib:$HOME/.local/share/uv/tools/kokoro-tts/lib/python3.14/site-packages/nvidia/curand/lib:$HOME/.local/share/uv/tools/kokoro-tts/lib/python3.14/site-packages/nvidia/cufft/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 alias readnote='bash ~/read-note.sh'
+alias aseprite='/home/xevrion/Coding/aseprite/build/bin/aseprite'
+
+export PATH=$PATH:/home/xevrion/.spicetify
+
+# arr-stack media control
+alias arr="$HOME/arr-stack/arr"
+
+# WebKitGTK DMA-BUF renderer crashes/lags on Nvidia proprietary driver (Tauri apps like Modrinth)
+export WEBKIT_DISABLE_DMABUF_RENDERER=1

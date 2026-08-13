@@ -23,7 +23,6 @@ spawn-at-startup "ghostty"
 spawn-sh-at-startup "wl-paste --watch cliphist store"
 spawn-at-startup "udiskie"
 spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
-spawn-at-startup "/usr/libexec/xdg-desktop-portal-kde"
 spawn-sh-at-startup "qs -c noctalia-shell -d"
 spawn-sh-at-startup "/home/xevrion/.local/bin/hypr-display-toggle guard"
 spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
@@ -61,7 +60,7 @@ output "eDP-1" {
     mode "1920x1080@144.003"
     position x=2560 y=0
     scale 1
-    variable-refresh-rate on-demand=true
+    variable-refresh-rate
 }
 
 // Workspaces are dynamic per-output — each monitor gets its own independent
