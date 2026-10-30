@@ -18,6 +18,7 @@
         "ignoreMouseInput": false,
         "overviewLayer": false,
         "pinnedApps": [
+            "kennel"
         ],
         "position": "center",
         "screenshotAnnotationTool": "",
@@ -143,17 +144,6 @@
                     "usePadding": false
                 },
                 {
-                    "colorizeIcons": false,
-                    "hideMode": "transparent",
-                    "id": "ActiveWindow",
-                    "maxWidth": 145,
-                    "scrollingMode": "hover",
-                    "showIcon": true,
-                    "showText": true,
-                    "textColor": "none",
-                    "useFixedWidth": false
-                },
-                {
                     "compactMode": false,
                     "hideMode": "hidden",
                     "hideWhenIdle": false,
@@ -180,6 +170,8 @@
                     "hidePassive": false,
                     "id": "Tray",
                     "pinned": [
+                        "steam",
+                        "Discord"
                     ]
                 },
                 {
@@ -335,6 +327,18 @@
                         "showBackground": true,
                         "x": 760,
                         "y": 40
+                    },
+                    {
+                        "clockColor": "none",
+                        "clockStyle": "digital",
+                        "customFont": "",
+                        "format": "HH:mm\\nd MMMM yyyy",
+                        "id": "Clock",
+                        "roundedCorners": true,
+                        "showBackground": true,
+                        "useCustomFont": false,
+                        "x": 50,
+                        "y": 50
                     }
                 ]
             },
@@ -356,6 +360,18 @@
                         "showBackground": true,
                         "x": 480,
                         "y": 40
+                    },
+                    {
+                        "clockColor": "none",
+                        "clockStyle": "digital",
+                        "customFont": "",
+                        "format": "HH:mm\\nd MMMM yyyy",
+                        "id": "Clock",
+                        "roundedCorners": true,
+                        "showBackground": true,
+                        "useCustomFont": false,
+                        "x": 50,
+                        "y": 50
                     }
                 ]
             }
@@ -461,9 +477,9 @@
         "telemetryEnabled": false
     },
     "hooks": {
-        "colorGeneration": "",
+        "colorGeneration": "~/.local/bin/wallglow sync",
         "darkModeChange": "",
-        "enabled": false,
+        "enabled": true,
         "performanceModeDisabled": "",
         "performanceModeEnabled": "",
         "screenLock": "",
@@ -503,7 +519,7 @@
         "weatherTaliaMascotAlways": false
     },
     "network": {
-        "bluetoothAutoConnect": false,
+        "bluetoothAutoConnect": true,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
         "bluetoothRssiPollIntervalMs": 60000,

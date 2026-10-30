@@ -7,12 +7,165 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "languages": {
-    "C++": {
-      "show_edit_predictions": true
+  // Indentation mirrored from Neovim's effective per-filetype values.
+  // Default is Neovim's built-in ts=8/noexpandtab; the overrides below are
+  // the filetypes where nvim's bundled ftplugins change it.
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
     }
   },
-  "show_edit_predictions": false,
+  "tab_size": 8,
+  "hard_tabs": true,
+
+  // Nothing reformats on save, matching nvim where autoformat is off.
+  // Explicit format (alt-shift-F) runs the same binaries conform.nvim uses,
+  // so output is byte-identical to <leader>f in nvim.
+  // NOTE: stylua and shfmt come from Mason and are NOT on $PATH, so they are
+  // referenced by absolute path here.
+  "format_on_save": "off",
+  "languages": {
+    "C": {
+      "formatter": {
+        "external": {
+          "command": "clang-format",
+          "arguments": ["--assume-filename={buffer_path}"]
+        }
+      }
+    },
+    "C++": {
+      "show_edit_predictions": true,
+      "formatter": {
+        "external": {
+          "command": "clang-format",
+          "arguments": ["--assume-filename={buffer_path}"]
+        }
+      }
+    },
+    "Lua": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "formatter": {
+        "external": {
+          "command": "/home/xevrion/.local/share/nvim/mason/bin/stylua",
+          "arguments": [
+            "--search-parent-directories",
+            "--stdin-filepath",
+            "{buffer_path}",
+            "-"
+          ]
+        }
+      }
+    },
+    "Python": {
+      "tab_size": 4,
+      "hard_tabs": false,
+      "formatter": {
+        "external": {
+          "command": "ruff",
+          "arguments": ["format", "--stdin-filename", "{buffer_path}", "-"]
+        }
+      }
+    },
+    "Rust": {
+      "tab_size": 4,
+      "hard_tabs": false,
+      "formatter": {
+        "external": { "command": "rustfmt", "arguments": [] }
+      }
+    },
+    "Shell Script": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "formatter": {
+        "external": {
+          "command": "/home/xevrion/.local/share/nvim/mason/bin/shfmt",
+          "arguments": ["-i", "2", "-ci"]
+        }
+      }
+    },
+    "Markdown": {
+      "tab_size": 4,
+      "hard_tabs": false,
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "JSON": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "JSONC": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "YAML": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "HTML": {
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "CSS": {
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "JavaScript": {
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "TypeScript": {
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "TSX": {
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    }
+  },
+  "show_edit_predictions": true,
   "edit_predictions": {
     "provider": "copilot"
   },
