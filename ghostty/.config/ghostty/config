@@ -9,9 +9,13 @@ keybind = ctrl+t=new_split:right
 keybind = ctrl+z=close_surface
 keybind = shift+enter=text:\x1b\r
 
-custom-shader = /home/xevrion/Coding/ghostty-shader-playground/public/shaders/cursor_blaze.glsl
-command = /usr/bin/zsh -l
 clipboard-read = allow
 clipboard-write = allow
 copy-on-select = false
 confirm-close-surface = false
+
+# Machine-specific lines (shell path, shader path, font size) live in
+# config.local next to this file. It is gitignored, one per machine.
+# Templates: ~/dotfiles/macos/ghostty.config.local (Mac),
+#            ~/dotfiles/macos/ghostty.config.local.linux (Fedora)
+config-file = ?config.local

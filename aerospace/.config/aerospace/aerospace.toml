@@ -1,0 +1,141 @@
+# AeroSpace config, ported from hyprland/.config/hypr/hyprland.conf
+# Docs: https://nikitabobko.github.io/AeroSpace/guide
+#
+# The mod key is alt (Option). On the Aula F75 in Mac mode (Fn+E) and on the
+# MacBook keyboard, Option sits where Super sits on a PC keyboard, so every
+# Hyprland SUPER bind below keeps the same finger position.
+#
+# Bindings do NOT fall back to defaults. If it is not listed here, it is unbound.
+
+config-version = 2
+
+after-startup-command = [
+  # Focus borders, Catppuccin Mocha mauve (Hyprland had border_size = 2)
+  'exec-and-forget borders active_color=0xffcba6f7 inactive_color=0x00000000 width=4.0',
+]
+
+start-at-login = true
+auto-reload-config = true
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+accordion-padding = 30
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+automatically-unhide-macos-hidden-apps = true
+
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+
+# Float the small system windows instead of tiling them.
+# Find any app's ID with: aerospace list-apps
+on-window-detected = [
+  { if = 'test %{app-bundle-id} = com.apple.systempreferences', run = 'layout floating' },
+  { if = 'test %{app-bundle-id} = com.apple.calculator', run = 'layout floating' },
+  { if = 'test %{app-bundle-id} = com.apple.ActivityMonitor', run = 'layout floating' },
+]
+
+key-mapping.preset = 'qwerty'
+
+# Hyprland: gaps_in = 6, gaps_out = 12
+gaps.inner.horizontal = 6
+gaps.inner.vertical   = 6
+gaps.outer.left       = 12
+gaps.outer.bottom     = 12
+gaps.outer.top        = 12
+gaps.outer.right      = 12
+
+# Hyprland: workspaces 1-5 on the big monitor, 6-10 on the laptop panel.
+# Set the M27QA as Main in System Settings > Displays.
+# Laptop only (no monitor): everything falls back to the built-in screen.
+[workspace-to-monitor-force-assignment]
+  1 = 'main'
+  2 = 'main'
+  3 = 'main'
+  4 = 'main'
+  5 = 'main'
+  6 = ['built-in', 'secondary']
+  7 = ['built-in', 'secondary']
+  8 = ['built-in', 'secondary']
+  9 = ['built-in', 'secondary']
+  10 = ['built-in', 'secondary']
+
+[mode.main.binding]
+  # --- Apps (Hyprland: SUPER+A terminal, SUPER+E file manager) ---
+  alt-a = 'exec-and-forget open -a Ghostty'
+  alt-e = 'exec-and-forget open ~'
+
+  # --- Windows (Hyprland: SUPER+Q killactive, SUPER+T togglefloating, SUPER+J togglesplit) ---
+  alt-q = 'close'
+  alt-t = 'layout floating tiling'
+  alt-j = 'layout tiles horizontal vertical'
+  alt-f = 'fullscreen'                         # new, Hyprland had no fullscreen bind
+  alt-comma = 'layout accordion horizontal vertical'
+
+  # --- Focus (Hyprland: SUPER+arrows movefocus) ---
+  alt-left  = 'focus left'
+  alt-down  = 'focus down'
+  alt-up    = 'focus up'
+  alt-right = 'focus right'
+
+  # --- Move window to the other monitor (Hyprland: SUPER+SHIFT+left/right movewindow mon:-1/+1) ---
+  alt-shift-left  = 'move-node-to-monitor --focus-follows-window --wrap-around left'
+  alt-shift-right = 'move-node-to-monitor --focus-follows-window --wrap-around right'
+
+  # --- Move window inside the workspace (new: ctrl added so shift+arrows keeps its Hyprland meaning) ---
+  alt-ctrl-left  = 'move left'
+  alt-ctrl-down  = 'move down'
+  alt-ctrl-up    = 'move up'
+  alt-ctrl-right = 'move right'
+
+  # --- Resize (Hyprland used SUPER+right-drag; AeroSpace has no mouse binds) ---
+  alt-minus = 'resize smart -50'
+  alt-equal = 'resize smart +50'
+
+  # --- Workspaces (Hyprland: SUPER+1..0, SUPER+SHIFT+1..0) ---
+  alt-1 = 'workspace 1'
+  alt-2 = 'workspace 2'
+  alt-3 = 'workspace 3'
+  alt-4 = 'workspace 4'
+  alt-5 = 'workspace 5'
+  alt-6 = 'workspace 6'
+  alt-7 = 'workspace 7'
+  alt-8 = 'workspace 8'
+  alt-9 = 'workspace 9'
+  alt-0 = 'workspace 10'
+
+  alt-shift-1 = 'move-node-to-workspace 1'
+  alt-shift-2 = 'move-node-to-workspace 2'
+  alt-shift-3 = 'move-node-to-workspace 3'
+  alt-shift-4 = 'move-node-to-workspace 4'
+  alt-shift-5 = 'move-node-to-workspace 5'
+  alt-shift-6 = 'move-node-to-workspace 6'
+  alt-shift-7 = 'move-node-to-workspace 7'
+  alt-shift-8 = 'move-node-to-workspace 8'
+  alt-shift-9 = 'move-node-to-workspace 9'
+  alt-shift-0 = 'move-node-to-workspace 10'
+
+  alt-tab = 'workspace-back-and-forth'
+
+  # --- Screenshot (Hyprland: SUPER+S shot-window, Print = region to clipboard) ---
+  alt-s = 'exec-and-forget screencapture -i -c'
+
+  # --- Not bound here on purpose (set these hotkeys inside Raycast instead) ---
+  # SUPER+O launcher   -> Raycast hotkey: Option+O
+  # SUPER+V clipboard  -> Raycast Clipboard History hotkey: Option+V
+  # SUPER+C control    -> Raycast or the menu bar
+
+  alt-shift-semicolon = 'mode service'
+
+[mode.service.binding]
+  esc = ['reload-config', 'mode main']
+  r = ['flatten-workspace-tree', 'mode main']
+  f = ['layout floating tiling', 'mode main']
+  backspace = ['close-all-windows-but-current', 'mode main']
+  alt-shift-left  = ['join-with left', 'mode main']
+  alt-shift-down  = ['join-with down', 'mode main']
+  alt-shift-up    = ['join-with up', 'mode main']
+  alt-shift-right = ['join-with right', 'mode main']
+

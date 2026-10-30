@@ -1,0 +1,18 @@
+# Copy to ~/.config/ghostty/config.local on the Mac (bootstrap.sh does it).
+# Loaded after the shared config, so these win.
+
+# macOS ships zsh at /bin/zsh
+command = /bin/zsh -l
+
+# Option acts as Alt in the terminal (Neovim / tmux Alt binds).
+# AeroSpace uses Option too, but only the combos bound in aerospace.toml.
+macos-option-as-alt = true
+
+# macOS renders fonts at 72 dpi points, so 12 looks small. Tune to taste.
+font-size = 14
+
+# The cursor shader, once ~/Coding/ghostty-shader-playground is cloned on the Mac
+custom-shader = /Users/xevrion/Coding/ghostty-shader-playground/public/shaders/cursor_blaze.glsl
+
+# Native Mac title bar that blends with the theme
+macos-titlebar-style = tabs

@@ -1,0 +1,60 @@
+# ~/.zshrc on the Mac. Ported from the Fedora ~/.zshrc (30 Oct 2026).
+# Same Oh My Zsh + Powerlevel10k + plugins, same aliases, Linux-only bits dropped.
+# Secrets and machine-only lines go in ~/.zshrc.local (never committed).
+
+# Powerlevel10k instant prompt. Keep near the top.
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Make Mac apps read ~/.config like on Linux (lazygit otherwise uses ~/Library/Application Support)
+export XDG_CONFIG_HOME="$HOME/.config"
+
+# Homebrew (Apple Silicon prefix)
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Oh My Zsh, same theme and plugins as Fedora
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+source $ZSH/oh-my-zsh.sh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# GNU tools under their normal names, interactive shell only.
+# Scripts with #!/bin/sh still get the BSD versions.
+export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/grep/libexec/gnubin:$PATH"
+
+# Node: fnm instead of nvm. Reads the same .nvmrc files, switches on cd,
+# and doesn't add nvm's startup delay to every new shell.
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# pnpm (Mac default home)
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# Android SDK, only if installed
+[ -d "$HOME/Library/Android/sdk" ] && export ANDROID_HOME="$HOME/Library/Android/sdk" && export PATH="$PATH:$ANDROID_HOME/platform-tools"
+
+# Same as Fedora
+export TERM=xterm-256color
+alias vim='nvim'
+alias glow='glow -p'
+# pbcopy / pbpaste are built into macOS, no xclip aliases needed
+
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+# Secrets, tokens, machine-only aliases. Not in git.
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local

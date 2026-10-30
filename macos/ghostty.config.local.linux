@@ -1,0 +1,3 @@
+# Copy to ~/.config/ghostty/config.local on Fedora. (Already in place on the current box.)
+custom-shader = /home/xevrion/Coding/ghostty-shader-playground/public/shaders/cursor_blaze.glsl
+command = /usr/bin/zsh -l

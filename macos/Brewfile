@@ -1,0 +1,106 @@
+# Brewfile, built from what is actually installed on the Fedora box (30 Oct 2026).
+# Every name below was checked against formulae.brew.sh.
+# Install: brew bundle install --file ~/dotfiles/macos/Brewfile
+
+# ---------- Taps (Homebrew 6 may ask you to `brew trust` these once) ----------
+tap "nikitabobko/tap"
+tap "FelixKratz/formulae"
+
+# ---------- Shell + core CLI (same tools as Fedora) ----------
+brew "git"
+brew "gh"
+brew "neovim"
+brew "tmux"
+brew "stow"
+brew "lazygit"
+brew "ripgrep"
+brew "fd"
+brew "fzf"
+brew "jq"
+brew "glow"
+brew "croc"
+brew "btop"
+brew "fastfetch"
+brew "cava"
+brew "wget"
+brew "tree"
+brew "dua-cli"        # disk usage, interactive: dua i ~
+brew "kondo"          # deletes node_modules / target / build dirs of old projects
+brew "stylua"         # Zed + Neovim formatters, on PATH instead of mason's Linux path
+brew "shfmt"
+
+# ---------- GNU tools (so Linux muscle memory and scripts keep working) ----------
+brew "coreutils"
+brew "gnu-sed"
+brew "findutils"
+brew "gnu-tar"
+brew "grep"
+brew "gawk"
+
+# ---------- Languages + build ----------
+brew "fnm"            # replaces nvm: same .nvmrc files, much faster shell startup
+brew "pnpm"
+brew "bun"
+brew "uv"
+brew "go"
+brew "rustup"         # then: rustup-init -y
+brew "zig"
+brew "cmake"
+brew "ninja"
+brew "openjdk"
+
+# ---------- Containers + cloud ----------
+brew "colima"         # Docker engine, free. OrbStack needs a paid licence for paid work
+brew "docker"
+brew "docker-compose"
+brew "docker-buildx"
+brew "kubernetes-cli" # kubectl
+brew "turso"
+
+# ---------- AI CLIs ----------
+brew "opencode"
+cask "claude-code"
+
+# ---------- Tiling (your Hyprland) ----------
+cask "nikitabobko/tap/aerospace"
+brew "FelixKratz/formulae/borders"
+
+# ---------- Terminal + editors (same as Fedora) ----------
+cask "ghostty"
+cask "zed"
+cask "visual-studio-code"
+cask "sublime-text"
+
+# ---------- Fonts (Ghostty uses JetBrains Mono; Nerd Font for p10k icons) ----------
+cask "font-jetbrains-mono"
+cask "font-jetbrains-mono-nerd-font"
+
+# ---------- macOS replacements for Linux bits ----------
+cask "raycast"            # rofi / Noctalia launcher + clipboard (set Option+O, Option+V)
+cask "karabiner-elements" # Caps Lock -> Esc/Ctrl
+cask "linearmouse"        # no acceleration, per-device scroll
+cask "alt-tab"            # window switcher
+cask "stats"              # menu bar CPU/RAM/temps (Noctalia widgets)
+cask "betterdisplay"      # M27QA brightness/volume from the keyboard
+cask "shottr"             # grim + slurp
+cask "keka"               # archives
+cask "appcleaner"         # uninstall leftovers
+cask "lulu"               # outbound firewall
+cask "coconutbattery"     # battery health history
+cask "grandperspective"   # free visual map of what fills the disk
+cask "logi-options+"      # MX Master 4
+
+# ---------- Apps you already use on Fedora ----------
+cask "obsidian"
+cask "brave-browser"
+cask "google-chrome"
+cask "vesktop"            # Discord (you use Vesktop on Fedora)
+cask "element"
+cask "spotify"
+cask "localsend"          # Fedora <-> Mac file transfer, same app both sides
+cask "parsec"
+cask "bruno"
+cask "claude"
+cask "gimp"
+cask "iina"               # replaces VLC
+cask "tailscale-app"      # reach the Lenovo / homelab from anywhere
