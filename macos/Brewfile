@@ -81,6 +81,7 @@ cask "karabiner-elements" # Caps Lock -> Esc/Ctrl
 cask "linearmouse"        # no acceleration, per-device scroll
 cask "alt-tab"            # window switcher
 cask "stats"              # menu bar CPU/RAM/temps (Noctalia widgets)
+cask "thaw"               # menu bar manager, keeps icons from hiding under the notch
 cask "betterdisplay"      # M27QA brightness/volume from the keyboard
 cask "shottr"             # grim + slurp
 cask "keka"               # archives
