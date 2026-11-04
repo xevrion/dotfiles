@@ -26,6 +26,13 @@ defaults write com.apple.dock autohide-time-modifier -float 0.2
 defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock mru-spaces -bool false
 
+echo "Stage Manager off (AeroSpace does the window management)"
+defaults write com.apple.WindowManager GloballyEnabled -bool false
+
+# Optional: auto-hide the menu bar for a full-screen look. Also hides Stats/Thaw
+# icons until you hover the top edge, so try it by hand first:
+# defaults write NSGlobalDomain _HIHideMenuBar -bool true
+
 echo "AeroSpace: one Spaces set across displays, grouped Mission Control"
 defaults write com.apple.spaces spans-displays -bool true
 defaults write com.apple.dock expose-group-apps -bool true
