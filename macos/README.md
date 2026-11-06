@@ -46,17 +46,20 @@ rsync -a ~/mac-transfer/claude/ ~/.claude/
 rsync -a ~/mac-transfer/agents/ ~/.agents/
 claude                                         # log in again
 ```
-**Old sessions too, a chosen set** (`claude --resume` history): `pack-claude-sessions.sh` takes the projects listed at its top (active ones, edit the list), only the main conversation files (2.1 GB, vs 7.6 GB with subagent logs), renames the folders for the Mac, and makes one AES-encrypted `~/mac-sessions.7z`. It asks for a password. Upload it to Google Drive, download on the Mac, then:
+**Old sessions + Kennel tabs** (`claude --resume` history): `pack-claude-sessions.sh` reads the project list from `~/.config/mac-transfer/sessions.txt` (private, not in this repo), takes only the main conversation files, renames the folders for the Mac, adds Kennel's `tabs.json` with paths rewritten, and makes one AES-encrypted `~/mac-sessions.7z` (asks for a password). Upload to Google Drive, download on the Mac, then:
 ```sh
 brew install sevenzip
 7zz x ~/Downloads/mac-sessions.7z -o"$HOME/mac-sessions"
 rsync -a ~/mac-sessions/projects/ ~/.claude/projects/
+mkdir -p ~/Library/Application\ Support/kennel && cp ~/mac-sessions/kennel/tabs.json ~/Library/Application\ Support/kennel/
 ```
-Old sessions keep their Linux paths inside: great for reading back and searching, resuming may hit `/home/xevrion/...` paths.
+Old sessions keep their Linux paths inside: great for reading back, resuming may hit `/home/xevrion/...` paths.
 
 The SEO skills need their venv and Playwright rebuilt on the Mac: run the claude-seo install script from `~/.agents/claude-seo` once.
 
 ### 2. Repos (`~/Coding`): rsync, not git, hot ones only
+
+**Just the repos you work on:** `copy-repos-to-mac.sh xevrion@<mac-ip>` copies the folders listed in `~/.config/mac-transfer/repos.txt` (private) exactly as they are, minus dependencies. Remote Login on the Mac first. The hot/cold split below is the bigger version.
 
 `split-coding.sh` sorts `~/Coding` into hot (touched in 60 days: 61 folders, 27 GB) and cold (171 folders, 9 GB) and prints the exact rsync and tar commands. Copy the hot ones with `--files-from`. The cold ones go into one archive kept on the Lenovo and the backup drive. The full-copy command below still works if you'd rather bring everything.
 Re-cloning loses work: **80 repos have uncommitted changes, 7 have unpushed commits, 16 have no remote at all.** Copy the folder as it is.
