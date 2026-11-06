@@ -46,11 +46,13 @@ rsync -a ~/mac-transfer/claude/ ~/.claude/
 rsync -a ~/mac-transfer/agents/ ~/.agents/
 claude                                         # log in again
 ```
-**All the old sessions too** (`claude --resume` history, ~7.5 GB, 2,800+ transcripts): a second script, because it's big and the Lenovo's disk is nearly full. It streams over SSH and writes nothing locally. Turn on Remote Login on the Mac first, then on Fedora:
+**Old sessions too, a chosen set** (`claude --resume` history): `pack-claude-sessions.sh` takes the projects listed at its top (active ones, edit the list), only the main conversation files (2.1 GB, vs 7.6 GB with subagent logs), renames the folders for the Mac, and makes one AES-encrypted `~/mac-sessions.7z`. It asks for a password. Upload it to Google Drive, download on the Mac, then:
 ```sh
-~/dotfiles/macos/pack-claude-sessions.sh xevrion@<mac-ip>
+brew install sevenzip
+7zz x ~/Downloads/mac-sessions.7z -o"$HOME/mac-sessions"
+rsync -a ~/mac-sessions/projects/ ~/.claude/projects/
 ```
-Old sessions keep their Linux paths inside, so they're great for reading back and searching. Resuming one and continuing work may hit `/home/xevrion/...` paths that don't exist on the Mac.
+Old sessions keep their Linux paths inside: great for reading back and searching, resuming may hit `/home/xevrion/...` paths.
 
 The SEO skills need their venv and Playwright rebuilt on the Mac: run the claude-seo install script from `~/.agents/claude-seo` once.
 
