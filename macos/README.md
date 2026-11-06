@@ -46,6 +46,12 @@ rsync -a ~/mac-transfer/claude/ ~/.claude/
 rsync -a ~/mac-transfer/agents/ ~/.agents/
 claude                                         # log in again
 ```
+**All the old sessions too** (`claude --resume` history, ~7.5 GB, 2,800+ transcripts): a second script, because it's big and the Lenovo's disk is nearly full. It streams over SSH and writes nothing locally. Turn on Remote Login on the Mac first, then on Fedora:
+```sh
+~/dotfiles/macos/pack-claude-sessions.sh xevrion@<mac-ip>
+```
+Old sessions keep their Linux paths inside, so they're great for reading back and searching. Resuming one and continuing work may hit `/home/xevrion/...` paths that don't exist on the Mac.
+
 The SEO skills need their venv and Playwright rebuilt on the Mac: run the claude-seo install script from `~/.agents/claude-seo` once.
 
 ### 2. Repos (`~/Coding`): rsync, not git, hot ones only
