@@ -13,6 +13,8 @@
 set -euo pipefail
 
 LIST="$HOME/.config/mac-transfer/repos.txt"
+EXCL="$HOME/.config/mac-transfer/exclude.txt"   # extra excludes (agent worktrees, caches, big traces); optional
+[ -f "$EXCL" ] || EXCL=""
 [ -f "$LIST" ] || { echo "Missing $LIST"; exit 1; }
 [ $# -eq 1 ] || { echo "Usage: $0 xevrion@<mac-ip>"; exit 1; }
 
@@ -24,5 +26,6 @@ rsync -aH --info=progress2 --rsync-path=/opt/homebrew/bin/rsync \
   --files-from="${TMPDIR:-/tmp}/mac-repos.$$" -r \
   --exclude node_modules/ --exclude target/ --exclude .next/ --exclude .venv/ \
   --exclude __pycache__/ --exclude .turbo/ --exclude dist/ --exclude .svelte-kit/ \
+  ${EXCL:+--exclude-from="$EXCL"} \
   ./ "$1:~/Coding/"
 echo "Done. On the Mac: ls ~/Coding"
